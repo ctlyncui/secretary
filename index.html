@@ -1,10 +1,19 @@
 <!doctype html>
 <html lang="en-us">
 	<head>
+		<title>Cabinet VR Test</title>
 		<meta charset="UTF-8">
 
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins&family=Ramaraja&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&family=Poltawski+Nowy:wght@700&display=swap" rel="stylesheet">
+
+
 		<!-- p5 core library -->
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js"></script>
+    	<script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js"></script>
+    	<script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/addons/p5.sound.min.js"></script>
 
 		<!-- A-Frame core library -->
 		<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
@@ -13,44 +22,99 @@
 		<script src="https://craignyu.github.io/aframep5/libraries/aframep5-v2.1.js"></script>
 
 		<!-- Your p5 Sketch -->
-		<script src="sketch.js"></script>
+		<!-- <script src="sketch.js"></script> -->
 
 		<!-- custom styles -->
 		<style>
+			main {
+			  display: block;
+			  overflow: hidden;
+			}
+
 			body {
+				background-image: url('beige.jpg');
 				padding: 0;
 				margin: 0;
 			}
+
+			#container{
+				display:block;
+				margin:auto;
+/*				border: 1px solid black;*/
+			}
+
+			#controls {
+                height: 5%;
+                line-height: 80px;
+                position: fixed;
+                right: 2%;
+                top: 2%;
+         	}
+
+         	.hidden{
+         		display:none;
+         	}
+
+	        .b{
+	         	background-color:rgb(92, 64, 51);
+				border:none;
+				border-radius:40px;
+				font-size:20px;
+				color:rgb(207,185,151);
+				font-family: 'Poltawski Nowy', serif;
+				padding:8px;
+	        }
+
+			p{
+				font-family: 'Raleway', sans-serif;
+				font-weight:100;
+				color:rgb(92, 64, 51);
+				font-size: 18px;
+				line-height: 2.6;
+			}
+
+			h1{
+				/*font-family: 'Raleway', sans-serif;*/
+				font-family: 'Poltawski Nowy', serif;
+				color:rgb(92, 64, 51);
+				text-shadow: 8px 6px 9px rgba(197,173,121,0.9);
+			}
+
 		</style>
 	</head>
 	<body>
+			<h1 style="text-align: center;">Explore the Secretary</h1>
 
-		<!-- container to hold our VR scene - make sure to give this element an ID of 'VRScene' -->
-	    <a-scene id="VRScene">
+			<div id="container" style="height:600px;width:800px">
+			    <iframe align = "center" style="height:600px;width:800px" src = "vr.html">
+			    </iframe>
+		   	</div>
 
-	    	<!--
-		       The 'a-assets' container is used to load in any external artwork you may want to use as "textures" for your objects. Ensure that this element has an ID of 'VRAssets'
+		   <!-- <div style="margin-left: 250px; margin-top:50px; margin-bottom:0px; width:60%;"> -->
+		   	<div style="margin: 0 auto; width:60%;">
+		   	<p id="one">
+		   		The American Revolution started in 1765 and was driven by colonial opposition to British rule. The Van Cortlandt House was sometimes located on contested ground during the Revolutionary War. Patriots were those in the colonies who wanted to separate from British rule, and Loyalists wished to remain under British control. 
+		   	</p>
+		   	<p  id = "two" >	The manor housed both the British and the Patriots and was host to visiting officers such as General George Washington, who stayed in the house in 1776 and 1783. To avoid the capture of their belongings, the Van Cortlandt did not outwardly pick a side. </p>
 
-		       Textures can be loaded by creating a new 'a-asset' tag inside of the 'a-assets' container.
-		       When doing this you will need to make sure to give your textures a unique ID -
-		       this will be used by p5 to create new objects.
+		   	<p  id="three" >The secretary has two arched doors, enclosing shelves, and small drawers with brass knobs. The secretary also contains a secret compartment where the family could hide any incriminating items. They most likely hid personal letters that could trace them back to any one party as well as money.
+		   	</p>
+		   	<br>
+		   	<br>
+		   	
+		   </div>
 
-		       Example:
+		    <div id="controls">
+	            <button class="b" onclick="switchBgm(event)"> Hear Introduction </button>
+	        </div>
 
-		       <img id="ITEM_ID_GOES_HERE" src="images/gold_block.png">
-				-->
-
-				<a-assets id="VRAssets">
-
-					<a-asset id="robot_obj" src="images/secretary_model_2023.obj"></a-asset>
-					<a-asset id="robot_mtl" src="images/secretary_model_2023.mtl"></a-asset>
-
-					<a-asset id="drawer_obj" src="images/drawer.obj"></a-asset>
-					<a-asset id="drawer_mtl" src="images/drawer.mtl"></a-asset>
-
-				</a-assets>
-
-	    </a-scene>
-
+	        <script>
+	        	if(animationMode){
+	        		let par = document.getElementById('one');
+					let para = document.getElementById('two');
+					let para2 = document.getElementById('three');
+					console.log(par,para,para2)
+	        	}
+	        </script>
 	</body>
 </html>
